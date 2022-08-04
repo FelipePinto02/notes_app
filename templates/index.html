@@ -9,20 +9,20 @@
 <body>
     <h1>Home</h1>
     {% if notes %}
-        <h2>My notes:</h2>
+        <h2>My Notes:</h2>
         {% for i in range(notes|length) %}
 
-        <form action="{{ url_for('notes')}}" method="POST" >
+        <form action="/notes" method="POST" >
             <ul>
-                <li id={{i + 1}}>{{ notas[i] }}</li>
+                <li id={{i + 1}}>{{ notes[i] }}</li>
             </ul>
-            <button name="edit" value={{i + 1}}>Editar</button>
-            <button name="delete" value={{i + 1}}>Deletar</button>
+            <button name="edit" value={{i + 1}}>Edit</button>
+            <button name="delete" value={{i + 1}}>Delete</button>
         </form>
 
         {% endfor %}
     {% endif %}
-    <form action="{{ url_for('salvar')}}" method="POST" >
+    <form action="/notes" method="POST" >
     
         <button name='new' value='new'>New Note</button>
       </form>
