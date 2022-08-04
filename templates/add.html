@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Editor</title>
+</head>
+<body>
+    <h1>Notes Editor</h1>
+
+    <a href="/templates/index.html">Return</a>
+
+    <form action="{{ url_for('index') }}" method="POST"><br>
+        <input type="text" placeholder="O que você está pensando agora?" name="nota">
+        <button name={{name}} value={{value}}>Save</button>
+    </form>
+</body>
+</html>
