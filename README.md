@@ -1,4 +1,4 @@
-# Feedback App using Python Flask and SQLAlchemy
+# Notes App using Python Flask and SQLAlchemy
 
 Simple Flask notes app to practice and develop a better understanding of the Flask framework and databases.
 
