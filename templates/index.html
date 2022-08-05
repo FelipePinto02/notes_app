@@ -4,25 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
     <title>Home</title>
 </head>
 <body>
-    <h1>Home</h1>
-        <h2>My Notes:</h2>
-        {% for note in notes %}
+    <header>
+        <h1>Home</h1>
+    </header>
+    <div class="container">
+        <div class="new-note-form">
+            <div class="grid-item">
+                <form action="/notes" method="POST" >   
+                    <button name='new' value='new' class="add-btn">Add Note</button>
+                </form>
+            </div>
+        </div>
+            {% if notes %}
+                <h2>My Notes:</h2>
+                {% for note in notes %}
 
-        <form action="/notes" method="POST" >
-            <ul>
-                <li id={{ note.id }}>{{ note.note }}</li>
-            </ul>
-            <button name="edit" value={{ note.id }}>Edit</button>
-            <button name="delete" value={{ note.id }}>Delete</button>
-        </form>
+                    <form action="/notes" method="POST" >
+                        <ul>
+                            <li id={{ note.id }}>{{ note.note }}</li>
+                        </ul>
+                        <button name="edit" value={{ note.id }}>Edit</button>
+                        <button name="delete" value={{ note.id }}>Delete</button>
+                    </form>
 
-        {% endfor %}
-    <form action="/notes" method="POST" >
-    
-        <button name='new' value='new'>New Note</button>
-      </form>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+        
 </body>
 </html>

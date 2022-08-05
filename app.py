@@ -25,7 +25,6 @@ def index():
       data = Notes(note)
       db.session.add(data)
       db.session.commit()
-      #notes.append(note)
       notes = Notes.query.order_by(Notes.id).all()
       return render_template("index.html", notes=notes)
     elif request.form.get("edit"):
@@ -33,7 +32,6 @@ def index():
       old_note = Notes.query.get(int(request.form['edit']))
       old_note.note = new_note
       db.session.commit()
-      #notes[int(request.form['edit']) - 1] = note
       notes = Notes.query.order_by(Notes.id).all()
       return render_template("index.html", notes=notes)
   else:

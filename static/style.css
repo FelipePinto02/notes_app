@@ -1,0 +1,48 @@
+body {
+    background-color: #d5e2ea;
+    color: #003e65;
+    font-size: 20px;
+}
+
+header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    padding: 25px 0px; 
+    border-bottom: solid 5px #116927d9;
+    width: 100%;
+    background-color: #b0d9f3;
+    color: #012225d9;
+    font-size: 25px;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 2.5px 5px #615f5f;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: relative;
+    top: 250px;
+}
+
+.new-note-form {
+    grid-column: 3;
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-btn {
+    background-color: #c1d7d7;
+    border: none;
+    font-size: 16px;
+    padding: 15px 32px;
+}
