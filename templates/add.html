@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
     <title>Notes Editor</title>
 </head>
 <body>
-    <h1>Notes Editor</h1>
-
+    <header>
+        <h1>Notes Editor</h1>
+    </header>
+    <div class="container">
+        <div class="note-form"> 
+            <form action="{{ url_for('index') }}" method="POST" class="save-note"><br>
+                <div class="grid-item-1">
+                    <label for="note">Write your note:</label><br>
+                    <input type="text" name="note">
+                </div>
+                <div class="grid-item-2">
+                    <button name={{name}} value={{value}} class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <a href="/templates/index.html">Return</a>
 
-    <form action="{{ url_for('index') }}" method="POST"><br>
-        <input type="text" placeholder="What are you thinking about?" name="note">
-        <button name={{name}} value={{value}}>Save</button>
-    </form>
+    
 </body>
 </html>
