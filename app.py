@@ -17,8 +17,6 @@ class Notes(db.Model):
     def __init__(self, note):
         self.note = note
 
-notes = Notes.query.all()
-
 @app.route("/", methods=["POST", 'GET'])
 def index():
   if request.method == "POST":
@@ -28,6 +26,7 @@ def index():
       db.session.add(data)
       db.session.commit()
       #notes.append(note)
+      notes = Notes.query.order_by(Notes.id).all()
       return render_template("index.html", notes=notes)
     elif request.form.get("edit"):
       new_note = request.form.get("note")
@@ -35,8 +34,10 @@ def index():
       old_note.note = new_note
       db.session.commit()
       #notes[int(request.form['edit']) - 1] = note
+      notes = Notes.query.order_by(Notes.id).all()
       return render_template("index.html", notes=notes)
   else:
+    notes = Notes.query.order_by(Notes.id).all()
     return render_template("index.html", notes=notes)  
 
 @app.route("/notes", methods=["POST"])
@@ -51,7 +52,10 @@ def salvar():
     return render_template("add.html", name=name, value=value)
   elif request.form.get("delete"):
     value = int(request.form['delete'])
-    notes.pop(value - 1)
+    old_note = db.session.query(Notes).filter(Notes.id==value).first()
+    db.session.delete(old_note)
+    db.session.commit()
+    notes = Notes.query.order_by(Notes.id).all()
     return render_template("index.html", notes=notes)
 
 if __name__ == '__main__':
