@@ -8,20 +8,18 @@
 </head>
 <body>
     <h1>Home</h1>
-    {% if notes %}
         <h2>My Notes:</h2>
-        {% for i in range(notes|length) %}
+        {% for note in notes %}
 
         <form action="/notes" method="POST" >
             <ul>
-                <li id={{i + 1}}>{{ notes[i] }}</li>
+                <li id={{ note.id }}>{{ note.note }}</li>
             </ul>
-            <button name="edit" value={{i + 1}}>Edit</button>
-            <button name="delete" value={{i + 1}}>Delete</button>
+            <button name="edit" value={{ note.id }}>Edit</button>
+            <button name="delete" value={{ note.id }}>Delete</button>
         </form>
 
         {% endfor %}
-    {% endif %}
     <form action="/notes" method="POST" >
     
         <button name='new' value='new'>New Note</button>
