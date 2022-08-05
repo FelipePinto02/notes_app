@@ -12,28 +12,40 @@
         <h1>Home</h1>
     </header>
     <div class="container">
-        <div class="note-form">
+        <div class="container-positioning">
             <div class="grid-item">
                 <form action="/notes" method="POST" >   
                     <button name='new' value='new' class="add-btn">Add Note</button>
                 </form>
             </div>
         </div>
-    </div>
-            {% if notes %}
-                <h2>My Notes:</h2>
-                {% for note in notes %}
+    
+        {% if notes %}
+        <div class="container-positioning">
+            <div class="grid-item">
+                <h2 class="notes-title">My Notes:</h2>
+            </div>
+        </div>
 
+            {% for note in notes %}
+            <div class="container-positioning">
+                <div class="note-content-container">
                     <form action="/notes" method="POST" >
-                        <ul>
-                            <li id={{ note.id }}>{{ note.note }}</li>
-                        </ul>
-                        <button name="edit" value={{ note.id }}>Edit</button>
-                        <button name="delete" value={{ note.id }}>Delete</button>
+                        <div class="note-text">
+                            <p id={{ note.id }}>{{ note.note }}</p>
+                        </div>
+                        <div class="note-btns">
+                            <button name="edit" value={{ note.id }}>Edit</button>
+                            <button name="delete" value={{ note.id }}>Delete</button>
+                        </div>
                     </form>
-
-                {% endfor %}
-            {% endif %}
+                </div>
+            </div>
+            <div class="container-positioning"></div>
+            {% endfor %}
+            
+        </div> 
+        {% endif %}
         
 </body>
 </html>

@@ -23,15 +23,33 @@ header {
     top: 250px;
 }
 
-.note-form {
+.container-positioning {
     grid-column: 3;
+}
+
+.notes-title {
+    margin-top: 35px;
 }
 
 .save-note {
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: auto auto;
     row-gap: 10px;
     justify-items: center;
+}
+
+.note-content-container {
+    position: relative;
+    right: 250px;
+    width: 250%;
+    background-color: aliceblue;
+    border: 1px solid black;
+    margin-bottom: 50px;
+}
+
+.note-text {
+    margin: 0px 10px;
+    color: #1a2222;
 }
 
 .grid-item {
