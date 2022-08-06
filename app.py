@@ -10,7 +10,7 @@ if ENV == 'dev':
   app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost/notes_app'
 else:
   app.debug = False
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:// \
+  app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:// \
   mrjjfgmoeqyqwr:598e7b4fb3522ff9e3dcfd2f9f047c03fd22647675d7fcc4619dd5567f5eb3b2@ec2-107-22-122-106.compute-1.amazonaws.com:5432/d9vm3f0nrrepo7'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
