@@ -13,3 +13,5 @@ psycopg2-binary==2.9.3
 SQLAlchemy==1.4.39
 Werkzeug==2.2.1
 zipp==3.8.1
+os
+re
