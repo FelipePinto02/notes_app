@@ -16,8 +16,12 @@
         <div class="container-positioning"> 
             <form action="{{ url_for('index') }}" method="POST" class="save-note"><br>
                 <div class="grid-item-1">
-                    <label for="note">Write your note:</label><br>
-                    <textarea type="text" name="note" rows="4" cols="50"></textarea>
+                    {% if old_note %}
+                        <label for="note">Edit your note:</label><br>
+                    {% else %}
+                        <label for="note">Write your note:</label><br>
+                    {% endif %}
+                    <textarea type="text" name="note" rows="4" cols="50">{{ old_note }}</textarea>
                 </div>
                 <div class="grid-item-2">
                     <button name={{name}} value={{value}} class="save-btn">Save</button>

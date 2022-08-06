@@ -2,6 +2,7 @@ body {
     background-color: #d5e2ea;
     color: #003e65;
     font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 header {
@@ -16,6 +17,14 @@ header {
     color: #012225d9;
     font-size: 25px;
 }
+
+textarea {
+    font-family: 'Times New Roman', Times, serif;  
+    font-size: 16px;
+    height: 153px;
+    width: 405px;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

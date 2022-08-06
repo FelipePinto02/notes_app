@@ -47,7 +47,8 @@ def salvar():
   elif request.form.get("edit"):
     name = 'edit'
     value = int(request.form.get('edit'))
-    return render_template("add.html", name=name, value=value)
+    old_note = Notes.query.get(value).note
+    return render_template("add.html", name=name, value=value, old_note=old_note)
   elif request.form.get("delete"):
     value = int(request.form['delete'])
     old_note = db.session.query(Notes).filter(Notes.id==value).first()
