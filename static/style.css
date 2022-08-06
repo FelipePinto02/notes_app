@@ -52,6 +52,23 @@ header {
     color: #1a2222;
 }
 
+.note-btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    right: 30px;
+    margin-bottom: 10px;
+}
+
+.note-btn {
+    background-color: #c1d7d7;
+    border: solid 0.5px #4d4d4d;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 12px;
+}
+
 .grid-item {
     display: flex;
     align-items: center;
@@ -87,6 +104,6 @@ header {
     box-shadow: 2.5px 5px #615f5f;
 }
 
-.save-btn:hover {
+.save-btn:hover, .note-btn:hover{
     cursor: pointer;
 }
