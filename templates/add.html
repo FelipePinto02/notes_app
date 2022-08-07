@@ -12,18 +12,26 @@
         <h1>Notes Editor</h1>
     </header>
     <a href="{{ url_for('index') }}" style="position: fixed; top: 187px;">Return</a>
+    {% if message %}
+        <p class="message">{{ message | safe }}</p>
+    {% endif %}
     <div class="container">
         <div class="container-positioning"> 
             <form action="{{ url_for('index') }}" method="POST" class="save-note"><br>
-                <div class="grid-item-1">
+                <div class="notes-grid-inputs">
                     {% if old_note %}
-                        <label for="note">Edit your note:</label><br>
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" value="{{ old_note.title }}">
+                        <label for="note">Edit your note:</label>
+                        <textarea type="text" name="note" rows="4" cols="50">{{ old_note.note }}</textarea>
                     {% else %}
-                        <label for="note">Write your note:</label><br>
+                        <label for="title">Title:</label>
+                        <input type="text" name="title">
+                        <label for="note">Write your note:</label>
+                        <textarea type="text" name="note" rows="4" cols="50"></textarea>
                     {% endif %}
-                    <textarea type="text" name="note" rows="4" cols="50">{{ old_note }}</textarea>
                 </div>
-                <div class="grid-item-2">
+                <div class="notes-save-btn">
                     <button name={{name}} value={{value}} class="save-btn">Save</button>
                 </div>
             </form>
