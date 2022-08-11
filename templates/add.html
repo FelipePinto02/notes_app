@@ -11,7 +11,7 @@
     <header>
         <h1>Notes Editor</h1>
     </header>
-    <a href="{{ url_for('index') }}" style="position: fixed; top: 187px;">Return</a>
+    <a href="{{ url_for('index') }}">Return</a>
     {% if message %}
         <p class="message">{{ message | safe }}</p>
     {% endif %}

@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 import os
 import re
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
   app.debug = True
@@ -26,10 +27,12 @@ class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200))
     note = db.Column(db.Text)
+    date = db.Column(db.DateTime)
 
-    def __init__(self, title, note):
+    def __init__(self, title, note, date):
       self.title = title
       self.note = note
+      self.date = date
 
 @app.route("/", methods=["POST", 'GET'])
 def index():
@@ -37,10 +40,11 @@ def index():
     if request.form.get("new"):
       title = request.form.get("title")
       note = request.form.get("note")
+      date = datetime.now().date()
       if title == '' or note == '':
         return render_template("add.html", message="Please enter your title and note!", name='new', value='new')
       else:
-        data = Notes(title, note)
+        data = Notes(title, note, date)
         db.session.add(data)
         db.session.commit()
         notes = Notes.query.order_by(Notes.id).all()
@@ -79,6 +83,11 @@ def salvar():
     db.session.commit()
     notes = Notes.query.order_by(Notes.id).all()
     return render_template("index.html", notes=notes)
+
+@app.template_filter('strftime')
+def format_datetime(date):
+  format = '%d/%m/%Y'
+  return date.strftime(format)
 
 if __name__ == '__main__':
     app.run()
